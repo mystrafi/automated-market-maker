@@ -72,7 +72,7 @@ contract NonfungiblePositionManager is
         address _factory,
         address _WETH9,
         address _tokenDescriptor_
-    ) ERC721Permit('Horiza Positions NFT', 'HORIZA', '1') PeripheryImmutableState(_factory, _WETH9) {
+    ) ERC721Permit("Mystra's NFT positions", "MYSTRA-POS", "1") PeripheryImmutableState(_factory, _WETH9) {
         _tokenDescriptor = _tokenDescriptor_;
     }
 
