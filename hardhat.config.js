@@ -31,11 +31,11 @@ module.exports = {
     networks: {
         hardhat: {
             forking: {
-                url: `https://sepolia.blast.io`
+                url: `https://rpc.ankr.com/eth_sepolia`
             }
         },
-        blast_sepolia: {
-            url: `https://sepolia.blast.io`,
+        sepolia: {
+            url: `https://rpc.ankr.com/eth_sepolia`,
             accounts: [PRIVATE_KEY]
         }
     },

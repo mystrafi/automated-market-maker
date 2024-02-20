@@ -14,7 +14,7 @@ async function main() {
             NFTDescriptor: nftDescriptor.target,
         }
     });
-    const WETH9 = "0xE494193DDBEE004F420545190D25d76907C9e102";
+    const WETH9 = "0x5b1C257B88537d1Ce2AF55a1760336288CcD28B6";
     const WETH32 = "0x4554480000000000000000000000000000000000000000000000000000000000";
     const nonfungibleTokenPositionDescriptor = await NonfungibleTokenPositionDescriptor.deploy(WETH9, WETH32);
     await nonfungibleTokenPositionDescriptor.waitForDeployment();
