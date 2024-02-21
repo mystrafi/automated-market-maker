@@ -311,7 +311,12 @@ contract NonfungiblePositionManager is
         payable
         override
         isAuthorizedForToken(params.tokenId)
-        returns (uint256 amount0, uint256 amount1)
+        returns (
+            uint256 amount0, 
+            uint256 amount1,
+            uint256 feeGrowthInside0LastX128,
+            uint256 feeGrowthInside1LastX128
+        )
     {
         require(params.amount0Max > 0 || params.amount1Max > 0);
         // allow collecting to the nft position manager address with address 0
@@ -328,7 +333,7 @@ contract NonfungiblePositionManager is
         // trigger an update of the position fees owed and fee growth snapshots if it has any liquidity
         if (position.liquidity > 0) {
             pool.burn(position.tickLower, position.tickUpper, 0);
-            (, uint256 feeGrowthInside0LastX128, uint256 feeGrowthInside1LastX128, , ) =
+            (, feeGrowthInside0LastX128, feeGrowthInside1LastX128, , ) =
                 pool.positions(PositionKey.compute(address(this), position.tickLower, position.tickUpper));
 
             tokensOwed0 += uint128(
@@ -348,6 +353,9 @@ contract NonfungiblePositionManager is
 
             position.feeGrowthInside0LastX128 = feeGrowthInside0LastX128;
             position.feeGrowthInside1LastX128 = feeGrowthInside1LastX128;
+        } else {
+            feeGrowthInside0LastX128 = position.feeGrowthInside0LastX128;
+            feeGrowthInside1LastX128 = position.feeGrowthInside1LastX128;
         }
 
         // compute the arguments to give to the pool#collect method
