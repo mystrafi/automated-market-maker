@@ -112,7 +112,7 @@ library NFTDescriptor {
         return
             string(
                 abi.encodePacked(
-                    'This NFT represents a liquidity position in the Mystra',
+                    'This NFT represents a liquidity position in a MYSTRA-',
                     quoteTokenSymbol,
                     '-',
                     baseTokenSymbol,
@@ -145,9 +145,7 @@ library NFTDescriptor {
                     '\\nFee Tier: ',
                     feeTier,
                     '\\nToken ID: ',
-                    tokenId,
-                    '\\n\\n',
-                    unicode'⚠️ DISCLAIMER: Due diligence is imperative when assessing this NFT. Make sure token addresses match the expected tokens, as token symbols may be imitated.'
+                    tokenId
                 )
             );
     }
@@ -160,7 +158,7 @@ library NFTDescriptor {
         return
             string(
                 abi.encodePacked(
-                    'Mystra - ',
+                    'MYSTRA - ',
                     feeTier,
                     ' - ',
                     escapeQuotes(params.quoteTokenSymbol),
