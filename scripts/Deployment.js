@@ -31,6 +31,10 @@ async function main() {
     const swapRouter = await SwapRouter.deploy(factory.target, WETH9);
     await swapRouter.waitForDeployment();
     console.log("SwapRouter deployed to:", swapRouter.target);
+    const Multicall2 = await ethers.getContractFactory("Multicall2");
+    const multicall2 = await Multicall2.deploy();
+    await multicall2.waitForDeployment();
+    console.log("Multicall2 deployed to:", multicall2.target);
 }
 
 main()
