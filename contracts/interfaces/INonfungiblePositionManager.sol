@@ -179,9 +179,4 @@ interface INonfungiblePositionManager is
         uint256 feeGrowthInside0LastX128,
         uint256 feeGrowthInside1LastX128
     );
-
-    /// @notice Burns a token ID, which deletes it from the NFT contract. The token must have 0 liquidity and all tokens
-    /// must be collected first.
-    /// @param tokenId The ID of the token that is being burned
-    function burn(uint256 tokenId) external payable;
 }
