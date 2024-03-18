@@ -46,6 +46,8 @@ contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
     address public immutable override token1;
     /// @inheritdoc IUniswapV3PoolImmutables
     uint24 public immutable override fee;
+    /// @notice FeesDistributor contract address.
+    address public constant FEES_DISTRIBUTOR = 0xa0D922F9667A501527e9E41281440F02a48c2e13;
 
     /// @inheritdoc IUniswapV3PoolImmutables
     int24 public immutable override tickSpacing;
@@ -683,6 +685,11 @@ contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
                 uint256 delta = (step.feeAmount * cache.feeProtocol) / 15;
                 step.feeAmount -= delta;
                 state.protocolFee += uint128(delta);
+                if (zeroForOne) {
+                    TransferHelper.safeTransfer(token0, FEES_DISTRIBUTOR, step.feeAmount);
+                } else {
+                    TransferHelper.safeTransfer(token1, FEES_DISTRIBUTOR, step.feeAmount);
+                }
             }
 
             // update global fee tracker

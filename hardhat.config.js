@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@nomicfoundation/hardhat-ethers");
 require("dotenv").config();
 const { PRIVATE_KEY, API_KEY } = process.env;
 
@@ -31,7 +32,8 @@ module.exports = {
     networks: {
         hardhat: {
             forking: {
-                url: `https://rpc.ankr.com/eth_sepolia`
+                url: `https://rpc.ankr.com/eth_sepolia`,
+                blockNumber: 5510709
             }
         },
         sepolia: {
