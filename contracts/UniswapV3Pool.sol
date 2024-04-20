@@ -47,7 +47,7 @@ contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
     /// @inheritdoc IUniswapV3PoolImmutables
     uint24 public immutable override fee;
     /// @notice FeesDistributor contract address.
-    address public constant FEES_DISTRIBUTOR = 0xa0D922F9667A501527e9E41281440F02a48c2e13;
+    address public constant FEES_DISTRIBUTOR = 0x5b1C257B88537d1Ce2AF55a1760336288CcD28B6;
 
     /// @inheritdoc IUniswapV3PoolImmutables
     int24 public immutable override tickSpacing;

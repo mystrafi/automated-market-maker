@@ -39,6 +39,10 @@ module.exports = {
         sepolia: {
             url: `https://rpc.ankr.com/eth_sepolia`,
             accounts: [PRIVATE_KEY]
+        },
+        mode: {
+            url: "https://1rpc.io/mode",
+            accounts: [PRIVATE_KEY]
         }
     },
     etherscan: {
